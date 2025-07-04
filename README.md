@@ -12,30 +12,43 @@
 
 Warcast.app is an advanced real-time conflict monitoring system that aggregates, analyzes, and visualizes global military conflicts using cutting-edge AI/ML technologies. In an era of information overload and rapidly evolving global tensions, our platform provides clarity by:
 
-- 📰 **Aggregating news from 25+ trusted sources** every 3 minutes
-- 🤖 **AI-powered analysis** using OpenAI GPT-4 for hourly intelligence briefs
-- 🎯 **Threat assessment** with our proprietary WW3 Doomsday Clock algorithm
-- 🗺️ **Geographic visualization** of conflict zones and events
-- 📊 **Sentiment analysis** and trend tracking over time
+- 📰 **Aggregating news from 50+ trusted sources** including ACLED verified conflict data
+- 🤖 **AI-powered analysis** using OpenAI (*more models to come) for real-time threat assessment
+- 🎯 **Intelligent filtering** with configurable threat thresholds to focus on significant events
+- 🗺️ **Entity extraction** identifying countries, organizations, weapons, and key figures
+- 📊 **Batch processing** analyzing 20 articles simultaneously for efficiency
 
 ## ✨ Key Features
 
 ### Real-time Intelligence
-- **3-minute news cycle** - Constantly updated from BBC, CNN, Al Jazeera, Reuters, and 20+ sources
-- **Duplicate detection** - Smart grouping of similar stories across sources
-- **Multi-language support** - Processes news in multiple languages
+- **Staging architecture** - Two-stage processing for optimal performance
+- **30-second processing cycle** - Rapid analysis of staged articles
+- **Duplicate detection** - Advanced hash-based deduplication at multiple levels
+- **Source aggregation** - Groups similar stories across multiple sources
+- **ACLED integration** - Verified conflict event data from academic sources
 
 ### AI-Powered Analysis
-- **Hourly Intelligence Briefs** - GPT-4 powered summaries of global conflict sentiment
-- **Entity Extraction** - Identifies countries, organizations, weapons, and key figures
-- **Threat Scoring** - Proprietary algorithm analyzing military keywords and major power involvement
-- **Historical Pattern Analysis** - Tracks escalation patterns over time
+- **Batch AI Processing** - GPT-4o-mini analyzes 20 articles in single API call
+- **Rich Entity Extraction** - Identifies:
+  - Countries and regions involved
+  - Military organizations and groups
+  - Key political figures and leaders
+  - Weapons systems and military assets
+- **Advanced Threat Scoring** - 0-100 scale based on:
+  - Military action indicators
+  - Nuclear threat detection
+  - Cyber warfare mentions
+  - Terrorism indicators
+- **Key Phrase Extraction** - Captures critical context from each article
+- **Local vs Global Classification** - Filters out local incidents to focus on geopolitical events
 
 ### Advanced Features
-- **WW3 Doomsday Clock** - Visual threat level indicator (0-100 scale)
-- **Admin Command Center** - ML training interface for improving classifications
-- **War Room** - Exclusive access area with blockchain-based authentication
-- **API Rate Limiting** - Enterprise-grade API management
+- **Global Threat Indicator** - Visual threat level indicator (0-100% scale)
+- **Configurable Threat Filtering** - Minimum score threshold (default: 25/100)
+- **Interactive Entity Display** - Color-coded badges for countries, organizations, weapons
+- **Detailed AI Analysis Modal** - Shows full assessment with threat indicators
+- **Performance Optimizations** - Database indexes, batch operations, pre-filtering
+- **Web3 - Solana Wallet Connect** - Access to restricted areas only by wallet login (more blockchain integrations to come)
 - **Mobile Responsive** - Full functionality on all devices
 
 ## 🏗️ Architecture
@@ -43,7 +56,7 @@ Warcast.app is an advanced real-time conflict monitoring system that aggregates,
 ### Tech Stack
 
 #### Frontend
-- **Framework**: Next.js 14 with App Router
+- **Framework**: Next.js with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **State Management**: React Query (TanStack Query)
@@ -51,7 +64,8 @@ Warcast.app is an advanced real-time conflict monitoring system that aggregates,
 - **Performance**: Server-side rendering, optimized caching
 
 #### Backend
-- **Framework**: FastAPI (Python 3.11)
+- **Framework**: FastAPI
+- **Language**: Python
 - **Database**: MariaDB 10.3 with SQLAlchemy ORM
 - **Caching**: Redis with automatic invalidation
 - **Migrations**: Alembic for database versioning
@@ -59,32 +73,40 @@ Warcast.app is an advanced real-time conflict monitoring system that aggregates,
 - **Authentication**: JWT with bcrypt hashing
 
 #### AI/ML Pipeline
-- **Text Analysis**: OpenAI GPT-4o-mini API
-- **Alternative**: HuggingFace Transformers support
-- **Pattern Learning**: Human-in-the-loop ML feedback system
-- **Scoring Algorithm**: Custom threat assessment based on:
-  - Military keyword frequency
-  - Major power involvement
-  - Weapon mentions
-  - Nuclear references
-  - Geographic proximity
+- **Text Analysis**: OpenAI GPT-4o-mini API exclusively
+- **Batch Processing**: Analyzes 20 articles per API call
+- **Staging Architecture**: Two-stage pipeline for efficiency:
+  1. RSS aggregation → staged_news_items table
+  2. AI analysis → news_items table (filtered by threat score)
+- **Comprehensive Analysis**:
+  - Threat score (0-100) with configurable threshold
+  - Sentiment analysis (positive/negative/neutral)
+  - Entity extraction (countries, orgs, people, weapons)
+  - Key phrase identification (max 5 per article)
+  - Threat indicator flags (military, nuclear, cyber, terrorism)
+  - Local incident detection to filter non-geopolitical news
 
 ### Data Flow
 
-1. **News Aggregation** → RSS feeds fetched every 3 minutes
-2. **Deduplication** → Similar articles grouped (80% similarity threshold)
-3. **War Analysis** → Threat scoring based on content
-4. **AI Enhancement** → GPT-4 analysis for deeper insights
-5. **Caching Layer** → Redis stores processed data
-6. **API Delivery** → RESTful endpoints serve frontend
-7. **Real-time Updates** → Frontend polls for latest data
+1. **News Aggregation** → RSS feeds fetched into staging table
+2. **Pre-filtering** → Excludes non-relevant content (sports, entertainment, etc.)
+3. **Deduplication** → Hash-based duplicate detection at staging level
+4. **Batch AI Analysis** → GPT-4o-mini processes 20 articles at once
+5. **Threat Filtering** → Only articles scoring ≥25/100 are saved
+6. **Entity Enrichment** → Extracts and stores structured entity data
+7. **Caching Layer** → Redis stores processed data with TTL
+8. **API Delivery** → RESTful endpoints with optimized queries
+9. **Frontend Display** → Rich visualization with entity badges and detailed modals
 
 ## 🚀 Performance
 
 - **Response Time**: <100ms API responses (cached)
-- **Update Frequency**: 3-minute news cycles
-- **Uptime**: 99.9% availability target
-- **Caching**: Multi-layer caching strategy
+- **Processing Speed**: 20 articles analyzed in ~1 seconds
+- **Update Frequency**: 30-second staged article processing
+- **Database Optimization**: Custom indexes for GUID, content, and processing status
+- **Batch Operations**: Bulk inserts and updates for efficiency
+- **Smart Filtering**: Pre-filters save ~90% of API calls
+- **Caching**: Multi-layer strategy with automatic invalidation
 
 ## 🤝 Contributing
 
@@ -94,7 +116,7 @@ We welcome contributions from developers passionate about global awareness and c
 
 1. **Report Issues**: Found a bug or have a suggestion? [Open an issue](https://github.com/yourusername/warcast-public/issues)
 2. **Submit PRs**: Have a fix or feature? Submit a pull request to this public repo
-3. **Get Access**: Quality contributors will be granted access to the private development repo
+3. **Get Access**: Quality contributors will be granted access to the private development repo - Open a PR here and I'll hook you up!
 
 ### We're Looking For
 
