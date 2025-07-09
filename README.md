@@ -12,7 +12,7 @@
 
 Warcast.app is an advanced real-time conflict monitoring system that aggregates, analyzes, and visualizes global military conflicts using cutting-edge AI/ML technologies. In an era of information overload and rapidly evolving global tensions, our platform provides clarity by:
 
-- 📰 **Aggregating news from 50+ trusted sources** including ACLED verified conflict data
+- 📰 **Aggregating news from 50+ trusted sources** including ACLED verified conflict data and GDELT
 - 🤖 **AI-powered analysis** using OpenAI (*more models to come) for real-time threat assessment
 - 🎯 **Intelligent filtering** with configurable threat thresholds to focus on significant events
 - 🗺️ **Entity extraction** identifying countries, organizations, weapons, and key figures
@@ -21,14 +21,14 @@ Warcast.app is an advanced real-time conflict monitoring system that aggregates,
 ## ✨ Key Features
 
 ### Real-time Intelligence
-- **Staging architecture** - Two-stage processing for optimal performance
-- **30-second processing cycle** - Rapid analysis of staged articles
-- **Duplicate detection** - Advanced hash-based deduplication at multiple levels
-- **Source aggregation** - Groups similar stories across multiple sources
-- **ACLED integration** - Verified conflict event data from academic sources
+- **WebSocket Architecture** - Live data streaming using WebSocket
+- **Instant Updates** - Real-time threat level changes and new events
+- **Duplicate Detection** - Advanced similarity detection across sources
+- **Source Aggregation** - Groups similar stories across multiple sources
+- **ACLED & GDELT Integration** - Verified conflict data from academic sources
 
 ### AI-Powered Analysis
-- **Batch AI Processing** - GPT-4o-mini analyzes 20 articles in single API call
+- **OpenAI GPT Processing** - Advanced threat assessment and entity extraction
 - **Rich Entity Extraction** - Identifies:
   - Countries and regions involved
   - Military organizations and groups
@@ -43,70 +43,73 @@ Warcast.app is an advanced real-time conflict monitoring system that aggregates,
 - **Local vs Global Classification** - Filters out local incidents to focus on geopolitical events
 
 ### Advanced Features
-- **Global Threat Indicator** - Visual threat level indicator (0-100% scale)
-- **Configurable Threat Filtering** - Minimum score threshold (default: 25/100)
+- **Global Threat Indicator** - Visual "doomsday clock" threat level (0-100% scale)
+- **WebSocket Channels** - Multiple real-time data streams:
+  - News updates channel
+  - Threat level changes channel
+  - Hourly analysis channel
+  - Update history channel
 - **Interactive Entity Display** - Color-coded badges for countries, organizations, weapons
-- **Detailed AI Analysis Modal** - Shows full assessment with threat indicators
-- **Performance Optimizations** - Database indexes, batch operations, pre-filtering
-- **Web3 - Solana Wallet Connect** - Access to restricted areas only by wallet login (more blockchain integrations to come)
+- **War Room** - Premium features with Solana wallet authentication:
+  - AI Scenario Predictions (48-hour forecasts)
+  - Advanced Visualizations (Live conflict maps)
+  - Country Risk Profiles
 - **Mobile Responsive** - Full functionality on all devices
-
-## 🏗️ Architecture
 
 ### Tech Stack
 
 #### Frontend
-- **Framework**: Next.js with App Router
+- **Framework**: Next.js
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **State Management**: React Query (TanStack Query)
+- **State Management**: React Query (TanStack Query) with WebSocket integration
 - **UI Components**: Custom components with Lucide icons
+- **Real-time**: WebSocket client with automatic reconnection
 - **Performance**: Server-side rendering, optimized caching
 
 #### Backend
 - **Framework**: FastAPI
 - **Language**: Python
-- **Database**: MariaDB 10.3 with SQLAlchemy ORM
+- **Database**: MariaDB with SQLAlchemy ORM
 - **Caching**: Redis with automatic invalidation
 - **Migrations**: Alembic for database versioning
 - **Task Scheduling**: AsyncIO-based background tasks
-- **Authentication**: JWT with bcrypt hashing
+- **WebSocket Server**: Real-time data broadcasting
+- **Authentication**: JWT with secure WebSocket channels
 
 #### AI/ML Pipeline
-- **Text Analysis**: OpenAI GPT-4o-mini API exclusively
-- **Batch Processing**: Analyzes 20 articles per API call
-- **Staging Architecture**: Two-stage pipeline for efficiency:
-  1. RSS aggregation → staged_news_items table
-  2. AI analysis → news_items table (filtered by threat score)
+- **Text Analysis**: OpenAI GPT API for comprehensive analysis
+- **War Agent AI**: Autonomous threat prediction using LangChain + Perplexity
+- **Unified Processing**: Streamlined pipeline for all data sources
 - **Comprehensive Analysis**:
-  - Threat score (0-100) with configurable threshold
+  - Threat score (0-100) with minimum threshold of 20
   - Sentiment analysis (positive/negative/neutral)
   - Entity extraction (countries, orgs, people, weapons)
-  - Key phrase identification (max 5 per article)
+  - Key phrase identification
   - Threat indicator flags (military, nuclear, cyber, terrorism)
   - Local incident detection to filter non-geopolitical news
 
 ### Data Flow
 
-1. **News Aggregation** → RSS feeds fetched into staging table
-2. **Pre-filtering** → Excludes non-relevant content (sports, entertainment, etc.)
-3. **Deduplication** → Hash-based duplicate detection at staging level
-4. **Batch AI Analysis** → GPT-4o-mini processes 20 articles at once
-5. **Threat Filtering** → Only articles scoring ≥25/100 are saved
-6. **Entity Enrichment** → Extracts and stores structured entity data
-7. **Caching Layer** → Redis stores processed data with TTL
-8. **API Delivery** → RESTful endpoints with optimized queries
-9. **Frontend Display** → Rich visualization with entity badges and detailed modals
+1. **News Aggregation** → RSS feeds from 50+ sources every 3 minutes
+2. **External Data** → ACLED conflicts and GDELT events every 6 hours
+3. **Pre-filtering** → Excludes non-relevant content (sports, entertainment, etc.)
+4. **Deduplication** → Advanced similarity detection across sources
+5. **AI Analysis** → OpenAI GPT analyzes threats and extracts entities
+6. **Threat Filtering** → Only articles scoring ≥20/100 are saved
+7. **WebSocket Broadcasting** → Real-time updates to all connected clients
+8. **Caching Layer** → Redis stores processed data with TTL
+9. **Frontend Display** → Live updates via WebSocket with rich visualizations
 
 ## 🚀 Performance
 
+- **Real-time Updates**: WebSocket delivers updates instantly (no polling)
 - **Response Time**: <100ms API responses (cached)
-- **Processing Speed**: 20 articles analyzed in ~1 seconds
-- **Update Frequency**: 30-second staged article processing
-- **Database Optimization**: Custom indexes for GUID, content, and processing status
-- **Batch Operations**: Bulk inserts and updates for efficiency
-- **Smart Filtering**: Pre-filters save ~90% of API calls
-- **Caching**: Multi-layer strategy with automatic invalidation
+- **Update Frequency**: News every 3 minutes, external data every 6 hours
+- **WebSocket Channels**: Separate channels for different data types
+- **Database Optimization**: Custom indexes and query optimization
+- **Smart Filtering**: Relevance scoring reduces noise by ~90%
+- **Caching**: Redis caching with automatic invalidation
 
 ## 🤝 Contributing
 
@@ -147,19 +150,26 @@ Hi! I'm Robert Schmidt, a developer passionate about leveraging technology to in
 
 If you find Warcast.app valuable, consider supporting its development:
 
-- **Ethereum**: `0xaAC0B63a317217675985CC78b7750e6DEfEFf119`
 - **Solana**: `robbschmidt.sol`
+- **Ethereum**: `0xaAC0B63a317217675985CC78b7750e6DEfEFf119`
 - **Bitcoin**: `bc1qvg5uvqahyarfcnxmsuds9pvvu56kyekn3hwjf3`
+- **Buy Me a Coffee**: [buymeacoffee.com/robbschmidt](https://buymeacoffee.com/robbschmidt)
 
 Your support helps maintain the infrastructure, API costs, and continuous development of new features.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.l
 
-## ⚠️ Disclaimer
+## ⚠️ Important Disclaimer
 
-Warcast.app is an information aggregation and analysis platform. All assessments are based on publicly available news sources and AI analysis. This platform should not be used as the sole source for making decisions regarding safety, security, or policy matters. Always consult multiple sources and expert opinions for critical decisions.
+**ALL CONTENT IS AI-GENERATED**: Warcast.app uses artificial intelligence to analyze conflicts WITHOUT human intervention or review. Our AI systems can and will make mistakes - just as humans tragically err in conflict situations. 
+
+**POLITICAL NEUTRALITY**: We are completely apolitical and maintain strict neutrality. We do not favor any nation, government, or ideology.
+
+**NOT PROFESSIONAL ADVICE**: This platform provides information only and should not be used as the sole source for decisions regarding safety, security, or policy matters. Always consult multiple sources and expert opinions.
+
+For full disclaimer, privacy policy, and cookie usage, visit: [warcast.app/public-info](https://warcast.app/public-info)
 
 ---
 
