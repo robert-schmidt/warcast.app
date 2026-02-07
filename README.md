@@ -1,180 +1,253 @@
-# 🚨 Warcast.app - Real-time Global Conflict Intelligence Platform
+<p align="center">
+  <img src="https://warcast.app/warcast-logo.png" alt="Warcast Logo" width="120" />
+</p>
 
-<div align="center">
-  [![Live Demo](https://img.shields.io/badge/Live-Demo-red?style=for-the-badge)](https://warcast.app)
-  [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
-  [![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
-  [![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
-  [![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
-</div>
+<h1 align="center">Warcast.app</h1>
+<p align="center"><strong>Real-time Global Conflict Intelligence Platform</strong></p>
 
-## 🌍 About
+<p align="center">
+  <a href="https://warcast.app"><img src="https://img.shields.io/badge/Live-warcast.app-red?style=for-the-badge" alt="Live Demo" /></a>
+  <a href="https://bags.fm/war"><img src="https://img.shields.io/badge/%24WAR-bags.fm-blueviolet?style=for-the-badge" alt="$WAR Token" /></a>
+  <a href="https://play.google.com/store/apps"><img src="https://img.shields.io/badge/Android-Play_Store-green?style=for-the-badge&logo=android&logoColor=white" alt="Android" /></a>
+</p>
 
-Warcast.app is an advanced real-time conflict monitoring system that aggregates, analyzes, and visualizes global military conflicts using cutting-edge AI/ML technologies. In an era of information overload and rapidly evolving global tensions, our platform provides clarity by:
-
-- 📰 **Aggregating news from 50+ trusted sources** including ACLED verified conflict data and GDELT
-- 🤖 **AI-powered analysis** using OpenAI (*more models to come) for real-time threat assessment
-- 🎯 **Intelligent filtering** with configurable threat thresholds to focus on significant events
-- 🗺️ **Entity extraction** identifying countries, organizations, weapons, and key figures
-- 📊 **Batch processing** analyzing 20 articles simultaneously for efficiency
-
-## ✨ Key Features
-
-### Real-time Intelligence
-- **WebSocket Architecture** - Live data streaming using WebSocket
-- **Instant Updates** - Real-time threat level changes and new events
-- **Duplicate Detection** - Advanced similarity detection across sources
-- **Source Aggregation** - Groups similar stories across multiple sources
-- **ACLED & GDELT Integration** - Verified conflict data from academic sources
-
-### AI-Powered Analysis
-- **OpenAI GPT Processing** - Advanced threat assessment and entity extraction
-- **Rich Entity Extraction** - Identifies:
-  - Countries and regions involved
-  - Military organizations and groups
-  - Key political figures and leaders
-  - Weapons systems and military assets
-- **Advanced Threat Scoring** - 0-100 scale based on:
-  - Military action indicators
-  - Nuclear threat detection
-  - Cyber warfare mentions
-  - Terrorism indicators
-- **Key Phrase Extraction** - Captures critical context from each article
-- **Local vs Global Classification** - Filters out local incidents to focus on geopolitical events
-
-### Advanced Features
-- **Global Threat Indicator** - Visual "doomsday clock" threat level (0-100% scale)
-- **WebSocket Channels** - Multiple real-time data streams:
-  - News updates channel
-  - Threat level changes channel
-  - Hourly analysis channel
-  - Update history channel
-- **Interactive Entity Display** - Color-coded badges for countries, organizations, weapons
-- **War Room** - Premium features with Solana wallet authentication:
-  - AI Scenario Predictions (48-hour forecasts)
-  - Advanced Visualizations (Live conflict maps)
-  - Country Risk Profiles
-- **Mobile Responsive** - Full functionality on all devices
-
-### Tech Stack
-
-#### Frontend
-- **Framework**: Next.js
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS
-- **State Management**: React Query (TanStack Query) with WebSocket integration
-- **UI Components**: Custom components with Lucide icons
-- **Real-time**: WebSocket client with automatic reconnection
-- **Performance**: Server-side rendering, optimized caching
-
-#### Backend
-- **Framework**: FastAPI
-- **Language**: Python
-- **Database**: MariaDB with SQLAlchemy ORM
-- **Caching**: Redis with automatic invalidation
-- **Migrations**: Alembic for database versioning
-- **Task Scheduling**: AsyncIO-based background tasks
-- **WebSocket Server**: Real-time data broadcasting
-- **Authentication**: JWT with secure WebSocket channels
-
-#### AI/ML Pipeline
-- **Text Analysis**: OpenAI GPT API for comprehensive analysis
-- **War Agent AI**: Autonomous threat prediction using LangChain + Perplexity
-- **Unified Processing**: Streamlined pipeline for all data sources
-- **Comprehensive Analysis**:
-  - Threat score (0-100) with minimum threshold of 20
-  - Sentiment analysis (positive/negative/neutral)
-  - Entity extraction (countries, orgs, people, weapons)
-  - Key phrase identification
-  - Threat indicator flags (military, nuclear, cyber, terrorism)
-  - Local incident detection to filter non-geopolitical news
-
-### Data Flow
-
-1. **News Aggregation** → RSS feeds from 50+ sources every 3 minutes
-2. **External Data** → ACLED conflicts and GDELT events every 6 hours
-3. **Pre-filtering** → Excludes non-relevant content (sports, entertainment, etc.)
-4. **Deduplication** → Advanced similarity detection across sources
-5. **AI Analysis** → OpenAI GPT analyzes threats and extracts entities
-6. **Threat Filtering** → Only articles scoring ≥20/100 are saved
-7. **WebSocket Broadcasting** → Real-time updates to all connected clients
-8. **Caching Layer** → Redis stores processed data with TTL
-9. **Frontend Display** → Live updates via WebSocket with rich visualizations
-
-## 🚀 Performance
-
-- **Real-time Updates**: WebSocket delivers updates instantly (no polling)
-- **Response Time**: <100ms API responses (cached)
-- **Update Frequency**: News every 3 minutes, external data every 6 hours
-- **WebSocket Channels**: Separate channels for different data types
-- **Database Optimization**: Custom indexes and query optimization
-- **Smart Filtering**: Relevance scoring reduces noise by ~90%
-- **Caching**: Redis caching with automatic invalidation
-
-## 🤝 Contributing
-
-We welcome contributions from developers passionate about global awareness and conflict analysis!
-
-### How to Contribute
-
-1. **Report Issues**: Found a bug or have a suggestion? [Open an issue](https://github.com/yourusername/warcast-public/issues)
-2. **Submit PRs**: Have a fix or feature? Submit a pull request to this public repo
-3. **Get Access**: Quality contributors will be granted access to the private development repo - Open a PR here and I'll hook you up!
-
-### We're Looking For
-
-- 🐍 **Python Developers**: Help improve our AI analysis, API endpoints, and data processing
-- 📱 **TypeScript/React Developers**: Enhance the frontend, add visualizations, improve UX
-
-### Contribution Areas
-
-- Improve threat detection algorithms
-- Add new data visualizations
-- Enhance mobile experience
-- Implement new language support
-- Optimize performance
-- Add new news sources
-- Improve AI prompts
-- Write documentation
-
-## 👨‍💻 About the Creator
-
-Hi! I'm Robert Schmidt, a developer passionate about leveraging technology to increase global awareness and promote peace through information transparency.
-
-### Connect With Me
-
-- 🐦 **Twitter/X**: [@robb_schmidt](https://x.com/robb_schmidt)
-- 🌐 **Website**: [robertschmidt.dev](https://robertschmidt.dev/)
-
-### Support the Project
-
-If you find Warcast.app valuable, consider supporting its development:
-
-- **Solana**: `robbschmidt.sol`
-- **Ethereum**: `0xaAC0B63a317217675985CC78b7750e6DEfEFf119`
-- **Bitcoin**: `bc1qvg5uvqahyarfcnxmsuds9pvvu56kyekn3hwjf3`
-- **Buy Me a Coffee**: [buymeacoffee.com/robbschmidt](https://buymeacoffee.com/robbschmidt)
-
-Your support helps maintain the infrastructure, API costs, and continuous development of new features.
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.l
-
-## ⚠️ Important Disclaimer
-
-**ALL CONTENT IS AI-GENERATED**: Warcast.app uses artificial intelligence to analyze conflicts WITHOUT human intervention or review. Our AI systems can and will make mistakes - just as humans tragically err in conflict situations. 
-
-**POLITICAL NEUTRALITY**: We are completely apolitical and maintain strict neutrality. We do not favor any nation, government, or ideology.
-
-**NOT PROFESSIONAL ADVICE**: This platform provides information only and should not be used as the sole source for decisions regarding safety, security, or policy matters. Always consult multiple sources and expert opinions.
-
-For full disclaimer, privacy policy, and cookie usage, visit: [warcast.app/public-info](https://warcast.app/public-info)
+<p align="center">
+  <img src="https://img.shields.io/badge/Next.js_14-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
+  <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+  <img src="https://img.shields.io/badge/Python_3.11-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white" alt="Kotlin" />
+  <img src="https://img.shields.io/badge/Solana-9945FF?style=flat-square&logo=solana&logoColor=white" alt="Solana" />
+  <img src="https://img.shields.io/badge/OpenAI-412991?style=flat-square&logo=openai&logoColor=white" alt="OpenAI" />
+</p>
 
 ---
 
-<div align="center">
-  <strong>Stay informed. Stay prepared. Stay peaceful.</strong>
-  
-  [Visit Warcast.app](https://warcast.app)
-</div>
+## About
+
+Warcast monitors global conflicts in real-time by aggregating news from **50+ international sources**, analyzing content with **OpenAI GPT**, **Perplexity**, and **Brave Search**, and delivering critical intelligence through a WebSocket-first interface. The War Agent system provides autonomous threat analysis, 48-hour predictions, multi-agent simulations, and market intelligence — available on web and Android.
+
+<!-- Add a dashboard screenshot: save as docs/screenshots/dashboard.png and uncomment below -->
+<!-- <p align="center"><img src="docs/screenshots/dashboard.png" alt="Warcast Dashboard" width="800" /></p> -->
+
+---
+
+## Features
+
+### War Agent Intelligence System
+
+The War Agent is a LangGraph-based orchestration system that autonomously monitors, analyzes, and predicts global conflicts.
+
+- **Perplexity + Brave Search** — Real-time intelligence gathering grounded in current events
+- **OpenAI GPT Analysis** — Deep threat assessment, entity extraction, and sentiment scoring
+- **Historical Pattern Analyzer** — 90 days of ACLED/GDELT data for escalation pattern detection
+- **48-Hour Predictions** — Calculates 24h, 48h, and 1-week escalation probabilities per region
+- **Multi-Agent Simulations** — Each major actor (USA, Russia, China, NATO, Iran, etc.) has unique decision profiles modeled on historical behavior
+- **Interactive Chat** — WebSocket-based bi-directional chat with persistent history and context-aware responses
+
+<!-- Add a War Agent chat screenshot: save as docs/screenshots/war-agent-chat.png and uncomment below -->
+<!-- <p align="center"><img src="docs/screenshots/war-agent-chat.png" alt="War Agent Chat" width="700" /></p> -->
+
+### Real-time Data Pipeline
+
+| Stage | Details |
+|-------|---------|
+| **Collection** | 50+ RSS feeds (every 3 min), ACLED, GDELT (every 6h), Perplexity, Brave Search |
+| **Deduplication** | Hybrid similarity scoring — title (50%), description (20%), keyword overlap (30%) |
+| **AI Analysis** | OpenAI GPT batch processing (5 articles at a time), entity extraction, threat scoring |
+| **Threat Filter** | Only articles scoring ≥20/100 are persisted; rescoring runs daily for 7-day-old articles |
+| **Delivery** | WebSocket v2 pushes updates instantly — no polling, channel-based subscriptions |
+| **Caching** | Redis layer with <100ms cached responses and automatic invalidation |
+
+### Smart Alerts V2
+
+Per-user configurable alert system with 10 threat types (escalation, nuclear, cyber, terrorism, economic, humanitarian, military movement, diplomatic, de-escalation, supply chain):
+
+- Severity thresholds (info → critical)
+- Region and country filtering
+- Source include/exclude lists
+- Keyword matching with exclusions
+- AI confidence minimum
+- Cooldown periods to prevent alert fatigue
+- Real-time WebSocket delivery to user-specific channels
+
+### Market Intelligence
+
+GTL (Global Threat Level) correlation analysis against BTC, S&P 500, and Gold with rolling window comparisons. Tracks how geopolitical events move markets.
+
+### Automated X (Twitter) Alerts
+
+Hourly intelligence briefs and critical event alerts posted automatically to [@WarCastApp](https://x.com/WarCastApp).
+
+### Threat Assessment
+
+Scoring system on a 0-100 scale:
+
+| Level | Score | Examples |
+|-------|-------|---------|
+| **Critical** | 90-100 | Nuclear threats, WMD deployment, world war declarations |
+| **High** | 70-89 | Invasions, major offensives, strategic bombings |
+| **Elevated** | 50-69 | Military buildups, sanctions, diplomatic breakdowns |
+| **Moderate** | 30-49 | Military exercises, border tensions, arms deals |
+
+Multipliers: major power involvement (+15), casualties (+10-20), nuclear keywords (+30).
+
+### Entity Tracking
+
+Extracts and tracks relationships between entities across conflicts — countries, organizations, weapons systems, military units, and key political figures. Relationship types include allied, opposed, controls, supports, and more.
+
+---
+
+## $WAR Token
+
+The **$WAR** token is Warcast's native Solana SPL token powering premium features:
+
+| Feature | Cost |
+|---------|------|
+| War Agent Chat sessions | $WAR |
+| 48-hour predictive forecasts | $WAR |
+| Multi-actor simulations | $WAR |
+| Premium alert configurations | $WAR |
+
+**Trade $WAR** → [bags.fm/war](https://bags.fm/war)
+
+Wallet integration via Solana with Jupiter price feeds. Connect any Solana wallet to get started.
+
+---
+
+## Tech Stack
+
+```
+Frontend          Backend            AI/ML               Infrastructure
+─────────────     ──────────────     ──────────────────   ──────────────
+Next.js 14        FastAPI            OpenAI GPT-4/5       Docker Compose
+React 18 + TS     Python 3.11        Perplexity Sonar     Nginx
+Tailwind CSS      SQLAlchemy 2.0     Brave Search API     Cloudflare CDN
+React Query       MariaDB + Redis    LangChain/LangGraph  GitHub Actions
+Privy Auth        Alembic            ACLED + GDELT data   Android (Kotlin)
+WebSocket v2      AsyncIO Tasks      Entity extraction     Solana/Jupiter
+```
+
+---
+
+## War Room
+
+Premium features accessible via Solana wallet authentication:
+
+**Active:**
+- War Agent Chat — Interactive AI conflict analyst
+- 48-Hour Predictions — ML-based escalation forecasting
+- Multi-Agent Simulations — Actor behavior modeling
+- Smart Alerts V2 — Configurable per-user threat notifications
+- Market Intelligence — GTL vs market correlation dashboard
+- Threat Tracker — Real-time ACLED/GDELT monitoring with AI scoring
+- Entity Tracking — Relationship mapping across conflicts
+
+**In Development:**
+- War Game — Strategic token-based conflict simulation
+- Push Notifications — Mobile and web
+- War Council — Community discussion and intel sharing
+- Intel Reports — Deep-dive exclusive analysis
+
+---
+
+## Android App
+
+Native Android app built with Kotlin + Jetpack Compose + Material Design 3:
+
+- Real-time WebSocket updates
+- Google Sign-In and Solana wallet authentication
+- Threat display, news cards, and stats matching the web UI
+- Hilt dependency injection
+
+---
+
+## Roadmap (February 2026)
+
+**✅ Completed**
+- LangGraph orchestration for autonomous threat analysis
+- Perplexity API + Brave Search integration
+- War Agent multi-actor simulations with historical patterns
+- Enhanced ACLED/GDELT integration with AI scoring
+- Smart Alerts V2 with per-user configs, source filtering, cooldowns
+- $WAR token launch on Solana
+- Market Intelligence dashboard (GTL correlation)
+- Automated X (Twitter) intelligence briefs
+- Entity tracking and relationship mapping
+- Android app with real-time WebSocket updates
+- Brave Search news ingestion
+
+**🚧 In Active Development**
+- War Game — Strategic token-based conflict simulation
+- Push notifications for mobile and web
+- Multi-language support
+- Enhanced multi-source fact-checking
+
+**🎯 Q2 2026**
+- Supply chain disruption modeling
+- Economic sanctions impact tracker
+- Community-driven intelligence verification
+- Android Play Store launch
+- Satellite imagery analysis
+
+**🔮 Future**
+- Autonomous 7-day predictive modeling
+- Defense/security API integrations
+- Professional analyst dashboards
+- Open-source intelligence (OSINT) network
+
+---
+
+## Contributing
+
+Contributions welcome from developers interested in conflict analysis and AI.
+
+1. **Report Issues** — [Open an issue](https://github.com/robert-schmidt/warcast.app/issues)
+2. **Submit PRs** — Submit a pull request to this repo
+3. **Get Access** — Quality contributors get access to the private development repo
+
+**Looking for:**
+- Python developers — AI analysis, API endpoints, data processing
+- TypeScript/React developers — Frontend, visualizations, UX
+- Kotlin developers — Android app features and improvements
+
+---
+
+## About the Creator
+
+Built by **Robert Schmidt** — [robertschmidt.dev](https://robertschmidt.dev/)
+
+- **X/Twitter**: [@robb_schmidt](https://x.com/robb_schmidt)
+- **Warcast**: [@WarCastApp](https://x.com/WarCastApp)
+
+### Support the Project
+
+| Method | Address |
+|--------|---------|
+| **Solana (SOL)** | `robbschmidt.sol` |
+| **Ethereum (ETH)** | `0xaAC0B63a317217675985CC78b7750e6DEfEFf119` |
+| **Bitcoin (BTC)** | `bc1qvg5uvqahyarfcnxmsuds9pvvu56kyekn3hwjf3` |
+| **Buy Me a Coffee** | [buymeacoffee.com/robbschmidt](https://buymeacoffee.com/robbschmidt) |
+
+---
+
+## License
+
+MIT License — see [LICENSE](LICENSE) for details.
+
+## Disclaimer
+
+**ALL CONTENT IS AI-GENERATED** without human review. AI systems can and will make mistakes.
+
+**POLITICAL NEUTRALITY**: Warcast is completely apolitical and maintains strict neutrality across all nations and ideologies.
+
+**NOT PROFESSIONAL ADVICE**: Information only — not a substitute for expert security, safety, or policy guidance. Always consult multiple sources.
+
+Full disclaimer: [warcast.app/public-info](https://warcast.app/public-info)
+
+---
+
+<p align="center">
+  <strong>Stay informed. Stay prepared. Stay peaceful.</strong><br />
+  <a href="https://warcast.app">warcast.app</a>
+</p>
