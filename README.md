@@ -109,7 +109,7 @@ The **$WAR** token is Warcast's native Solana SPL token powering premium feature
 | Multi-actor simulations | $WAR |
 | Premium alert configurations | $WAR |
 
-**Trade $WAR** → [bags.fm/war](https://bags.fm/vT5LomTHPwKJspQnMLczYTmD8z8X5L4rPpBosdXBAGS)
+**Trade $WAR** → [bags.fm](https://bags.fm/vT5LomTHPwKJspQnMLczYTmD8z8X5L4rPpBosdXBAGS)
 
 Wallet integration via Solana with Jupiter price feeds. Connect any Solana wallet to get started.
 
