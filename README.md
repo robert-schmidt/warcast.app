@@ -7,7 +7,7 @@
 
 <p align="center">
   <a href="https://warcast.app"><img src="https://img.shields.io/badge/Live-warcast.app-red?style=for-the-badge" alt="Live Demo" /></a>
-  <a href="https://bags.fm/war"><img src="https://img.shields.io/badge/%24WAR-bags.fm-blueviolet?style=for-the-badge" alt="$WAR Token" /></a>
+  <a href="https://bags.fm/vT5LomTHPwKJspQnMLczYTmD8z8X5L4rPpBosdXBAGS"><img src="https://img.shields.io/badge/%24WAR-bags.fm-blueviolet?style=for-the-badge" alt="$WAR Token" /></a>
   <a href="https://play.google.com/store/apps"><img src="https://img.shields.io/badge/Android-Play_Store-green?style=for-the-badge&logo=android&logoColor=white" alt="Android" /></a>
 </p>
 
@@ -109,7 +109,7 @@ The **$WAR** token is Warcast's native Solana SPL token powering premium feature
 | Multi-actor simulations | $WAR |
 | Premium alert configurations | $WAR |
 
-**Trade $WAR** → [bags.fm/war](https://bags.fm/war)
+**Trade $WAR** → [bags.fm/war](https://bags.fm/vT5LomTHPwKJspQnMLczYTmD8z8X5L4rPpBosdXBAGS)
 
 Wallet integration via Solana with Jupiter price feeds. Connect any Solana wallet to get started.
 
