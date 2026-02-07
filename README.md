@@ -8,7 +8,6 @@
 <p align="center">
   <a href="https://warcast.app"><img src="https://img.shields.io/badge/Live-warcast.app-red?style=for-the-badge" alt="Live Demo" /></a>
   <a href="https://bags.fm/vT5LomTHPwKJspQnMLczYTmD8z8X5L4rPpBosdXBAGS"><img src="https://img.shields.io/badge/%24WAR-bags.fm-blueviolet?style=for-the-badge" alt="$WAR Token" /></a>
-  <a href="https://play.google.com/store/apps"><img src="https://img.shields.io/badge/Android-Play_Store-green?style=for-the-badge&logo=android&logoColor=white" alt="Android" /></a>
 </p>
 
 <p align="center">
@@ -25,7 +24,7 @@
 
 ## About
 
-Warcast monitors global conflicts in real-time by aggregating news from **50+ international sources**, analyzing content with **OpenAI GPT**, **Perplexity**, and **Brave Search**, and delivering critical intelligence through a WebSocket-first interface. The War Agent system provides autonomous threat analysis, 48-hour predictions, multi-agent simulations, and market intelligence — available on web and Android.
+Warcast monitors global conflicts in real-time by aggregating news from **50+ international sources**, analyzing content with **OpenAI GPT**, **Perplexity**, and **Brave Search**, and delivering critical intelligence through a WebSocket-first interface. The War Agent system provides autonomous threat analysis, 48-hour predictions, multi-agent simulations, and market intelligence.
 
 <!-- Add a dashboard screenshot: save as docs/screenshots/dashboard.png and uncomment below -->
 <!-- <p align="center"><img src="docs/screenshots/dashboard.png" alt="Warcast Dashboard" width="800" /></p> -->
@@ -151,9 +150,9 @@ Premium features accessible via Solana wallet authentication:
 
 ---
 
-## Android App
+## Android App (In Development)
 
-Native Android app built with Kotlin + Jetpack Compose + Material Design 3:
+Native Android app being built with Kotlin + Jetpack Compose + Material Design 3:
 
 - Real-time WebSocket updates
 - Google Sign-In and Solana wallet authentication
@@ -174,10 +173,10 @@ Native Android app built with Kotlin + Jetpack Compose + Material Design 3:
 - Market Intelligence dashboard (GTL correlation)
 - Automated X (Twitter) intelligence briefs
 - Entity tracking and relationship mapping
-- Android app with real-time WebSocket updates
 - Brave Search news ingestion
 
 **🚧 In Active Development**
+- Android app (Kotlin + Jetpack Compose) with Play Store launch
 - War Game — Strategic token-based conflict simulation
 - Push notifications for mobile and web
 - Multi-language support
@@ -187,7 +186,6 @@ Native Android app built with Kotlin + Jetpack Compose + Material Design 3:
 - Supply chain disruption modeling
 - Economic sanctions impact tracker
 - Community-driven intelligence verification
-- Android Play Store launch
 - Satellite imagery analysis
 
 **🔮 Future**
